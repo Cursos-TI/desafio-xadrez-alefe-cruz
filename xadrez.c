@@ -6,40 +6,34 @@ int main() {
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
 
-    int bispo, torre, rainha; //aqui crio cada variável pedida no desafio
+    int bispo, torre, rainha;
+    int cavalo = 1;
 
     bispo = 1;
     torre = 1;
-    rainha = 8; //aqui dou os valores para cada uma, colo a rainha como 8 para simular ela estando na última casa da direita
+    rainha = 8;
 
-    while (bispo <= 5) { // aqui simulo a movimentação do Bispo em diagonal cima-direita
-        printf("Bispo Cima-Direita\n");
+    while (bispo <= 5) { // Simulando a movimentação do Bispo em diagonal cima-direita
+        printf("Bispo_Cima-Direita\t");
         bispo++;
-    }
+    }   printf("\n");
 
-    do { // aqui simulo a movimentação da Torre para a direita
-        printf("Torre Direita\n");
+    do { // Simulando a movimentação da Torre para a direita
+        printf("Torre_Direita\t");
         torre++;
     } while (torre <= 5);
+    printf("\n");
 
-    for (rainha; rainha >= 1; rainha--) { // aqui simulo a movimentação da Rainha para a esquerda
-        printf("Rainha Esquerda\n");
+    for (rainha; rainha >= 1; rainha--) { // Simulando a movimentação da Rainha para a esquerda
+        printf("Rainha_Esquerda\t");
+    }   printf("\n");
+
+    while(cavalo--) { // Simulando a movimentação do Cavalo para cima e para a direita
+        for (int i = 0; i < 2; i++) { // O Cavalo se move em "L", então ele pode se mover 2 casas para cima (ou baixo) e 1 para a direita ou esquerda
+            printf("Cavalo_Cima\t");
+        }
+        printf("Cavalo_Direita\n");
     }
-
-    //acima usei as 3 estruturas diferentes como foi pedido, para demonstra como entendi cada uma
-
-    // Implementação de Movimentação do Bispo
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação do Bispo em diagonal.
-
-    // Implementação de Movimentação da Torre
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Torre para a direita.
-
-    // Implementação de Movimentação da Rainha
-    // Sugestão: Utilize uma estrutura de repetição para simular a movimentação da Rainha para a esquerda.
-
-    // Nível Aventureiro - Movimentação do Cavalo
-    // Sugestão: Utilize loops aninhados para simular a movimentação do Cavalo em L.
-    // Um loop pode representar a movimentação horizontal e outro vertical.
 
     // Nível Mestre - Funções Recursivas e Loops Aninhados
     // Sugestão: Substitua as movimentações das peças por funções recursivas.
