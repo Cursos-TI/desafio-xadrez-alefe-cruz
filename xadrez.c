@@ -2,45 +2,54 @@
 
 // Desafio de Xadrez Estacio - Alefe Cruz
 
-int main() {
-    // Nível Novato - Movimentação das Peças
-    // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
+void movimentacaoBispo(int casaBispoDireita) {
+    for (casaBispoDireita = 0; casaBispoDireita < 5; casaBispoDireita++) { //aqui simulo a movimentação do Bispo para a direita
+        printf("(Bispo_Direita\t");
+        for (int casaBispoCima = 0; casaBispoCima < 1; casaBispoCima++) { //aqui simulo Bispo para cima, fazendo com que casa movimento para direita tenha exatamente um para cima
+            printf("Bispo_Cima)\t");
+        } 
+    }   //como pedido no desafio, uso loop aninhado para simular o movimento diagonal do Bispo
+}       //aqui uso a recursividade para simular o movimento do Bispo
 
-    int bispo, torre, rainha;
-    int cavalo = 1;
-
-    bispo = 1;
-    torre = 1;
-    rainha = 8;
-
-    while (bispo <= 5) { // Simulando a movimentação do Bispo em diagonal cima-direita
-        printf("Bispo_Cima-Direita\t");
-        bispo++;
-    }   printf("\n");
-
-    do { // Simulando a movimentação da Torre para a direita
-        printf("Torre_Direita\t");
-        torre++;
-    } while (torre <= 5);
-    printf("\n");
-
-    for (rainha; rainha >= 1; rainha--) { // Simulando a movimentação da Rainha para a esquerda
-        printf("Rainha_Esquerda\t");
-    }   printf("\n");
-
-    while(cavalo--) { // Simulando a movimentação do Cavalo para cima e para a direita
-        for (int i = 0; i < 2; i++) { // O Cavalo se move em "L", então ele pode se mover 2 casas para cima (ou baixo) e 1 para a direita ou esquerda
-            printf("Cavalo_Cima\t");
-        }
-        printf("Cavalo_Direita\n");
+void movimentacaoTorre(int casaTorre) {
+    if (casaTorre > 0) {
+        printf("(Torre_Direita)\t");
+        movimentacaoTorre(casaTorre - 1);
     }
+}       //aqui uso a recursividade para simular o movimento da Torr
 
-    // Nível Mestre - Funções Recursivas e Loops Aninhados
-    // Sugestão: Substitua as movimentações das peças por funções recursivas.
-    // Exemplo: Crie uma função recursiva para o movimento do Bispo.
+void movimentacaoRainha(int casaRainha) {
+    if (casaRainha > 0) {
+        printf("(Rainha_Esquerda)\t");
+        movimentacaoRainha(casaRainha - 1); 
+    }
+}       //aqui uso a recursividade para simular o movimento da Rainha
 
-    // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
-    // Inclua o uso de continue e break dentro dos loops.
+void movimentacaoCavalo(int casaCavaloCima) {
+    printf("(");
+    for (casaCavaloCima = 1; casaCavaloCima <= 2; casaCavaloCima++) { //aqui simulo o movimento do Cavalo para cima
+        printf("Cavalo_Cima ");
+        for (int casaCavaloDireita = 0; casaCavaloDireita < 1 && casaCavaloCima % 2 == 0; casaCavaloDireita++) {
+            //aqui simulo o movimento do Cavalo para direita, fazendo um movimento em "L"
+            //usando Loop e condições da maneira que entendi, fiz com que o Cavalo fizesse apenas um movimento direita para cada dois cima
+            printf("Cavalo_Direita)\t");
+        }
+    }
+}       //aqui uso a recursividade para simular o movimento do Cavalo
 
+int main() {
+
+        movimentacaoBispo(5); //aqui puxo a função da movimentação do Bispo, uso o 5 para simular a quantidade de movimentos
+        printf("\n");
+        
+        movimentacaoTorre(5); //aqui puxo a função da movimentação da Torre, mesma coisa do Bispo, uso o 5 para simular a quantidade de movimentos
+        printf("\n");
+
+        movimentacaoRainha(8); //aqui puxo a função da movimentação da Rainha, novamente mesma coisa do Bispo
+        printf("\n");
+
+        movimentacaoCavalo(1); //aqui puxo a função da movimentação do Cavalo, aqui puxo apenas uma vez pois é o máximo de movimentos que o Cavalo pode fazer por rodada
+        printf("\n");
+        
     return 0;
 }
